@@ -21,6 +21,7 @@ export const HistoryList = styled.div`
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
+    white-space: nowrap;
 
     th {
       background: ${(props) => props.theme['gray-600']};

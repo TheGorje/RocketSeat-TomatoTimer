@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { CountDownContainer, Separator } from './styles'
 import { differenceInSeconds } from 'date-fns'
 import { CyclesContext } from '../../../Contexts/CyclesContext'
@@ -20,9 +20,13 @@ export function Countdown() {
   const minutes = String(minutesAmount).padStart(2, '0')
   const seconds = String(secondsAmount).padStart(2, '0')
 
+  const originalTitle = useRef(document.title)
+
   useEffect(() => {
     if (activeCycle) {
-      document.title = `${minutes}:${seconds} - TomatoTimer`
+      document.title = `TomatoTimer | ${minutes}:${seconds}`
+    } else {
+      document.title = originalTitle.current
     }
   }, [activeCycle, amountSecondsPassed, seconds, minutes])
 
@@ -33,7 +37,7 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          activeCycle.startDate,
+          new Date(activeCycle.startDate),
         )
 
         if (secondsDifference >= totalSeconds) {

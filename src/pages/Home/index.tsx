@@ -46,7 +46,7 @@ export function Home() {
     <HomeContainer>
       <form action="" onSubmit={handleSubmit(handleCreateNewCycle)}>
         <FormProvider {...newCycleForm}>
-          <NewCycleForm />
+          <NewCycleForm isSubmitDisabled={isSubmitDisabled} />
         </FormProvider>
 
         <Countdown />

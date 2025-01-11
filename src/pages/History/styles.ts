@@ -84,3 +84,13 @@ export const Status = styled.span<StatusProps>`
     background: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
   }
 `
+export const EmptyList = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+`
